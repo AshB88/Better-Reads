@@ -35,3 +35,7 @@ a {
   padding: 10px; /* Add padding inside the box */
   border-radius: 8px; /* Rounded corners for better aesthetics */
 }
+
+.star:hover {
+  color: #f1c40f; /* Yellow color for the star icon */
+}
