@@ -10,3 +10,28 @@ a {
     margin: 0;
     height: 100vh;
     }
+
+    /* Styling for the "To Read" column */
+#to-read {
+  position: absolute; /* Absolute positioning for precise placement */
+  top: 10%; /* Position from the top (adjustable) */
+  left: 10%; /* Position from the left (adjustable) */
+}
+
+/* Styling for the "Completed" column */
+#completed {
+  position: absolute; /* Absolute positioning for precise placement */
+  top: 10%; /* Align with "To Read" */
+  right: 20%; /* Position from the right (adjustable) */
+}
+
+/* Styling for the "Favorites" column */
+#favorites {
+  position: absolute; /* Absolute positioning for precise placement */
+  bottom: 80%; /* Position from the bottom (adjustable) */
+  right: 90%; /* Center horizontally */
+  transform: translateX(50%); /* Adjust horizontal position to center the column */
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent background for better readability */
+  padding: 10px; /* Add padding inside the box */
+  border-radius: 8px; /* Rounded corners for better aesthetics */
+}
