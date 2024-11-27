@@ -36,6 +36,28 @@ a {
   border-radius: 8px; /* Rounded corners for better aesthetics */
 }
 
-.star:hover {
-  color: #f1c40f; /* Yellow color for the star icon */
+/* Styling for the star rating system */
+.star {
+  font-size: 20;
+  cursor: pointer;
+}
+ 
+.one {
+  color: gold;
+}
+ 
+.two {
+  color: gold;
+}
+ 
+.three {
+  color: gold;
+}
+ 
+.four {
+  color: gold;
+}
+ 
+.five {
+  color: gold;
 }

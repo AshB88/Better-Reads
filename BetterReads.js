@@ -1,11 +1,32 @@
+// Set variables to record book rating and comment
 const starRating = document.querySelector('.star-rating');
 const starRatingValue = document.querySelector('.star-rating-value');
 
+// Set stars variable
+let stars = document.querySelectorAll('.star');
+
+// Star rating system function
+function gfg(n) {
+    remove();
+    const classes = ['one', 'two', 'three', 'four', 'five'];
+    for (let i = 0; i < n; i++) {
+        stars[i].className = 'star ' + classes[n - 1];
+    }
+}
+
+// To remove pre-applied styling
+function remove() {
+    stars.forEach(star => star.className = 'star');
+}
+
+
+// Modal/event listener for book review
 document.addEventListener('DOMContentLoaded', function () {
     const stars = document.querySelectorAll('.star');
     const commentText = document.getElementById('comment-text');
     const favoritesSection = document.getElementById('favorites-section');
     const submitReviewButton = document.getElementById('submit-review');
+    const addToFavoritesButton = document.querySelector('.btn-success');
     let selectedRating = 0;
 
     // Handle star rating click
@@ -37,9 +58,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const comment = commentText.value;
         if (selectedRating > 0 && comment.trim() !== '') {
             alert(`Rating: ${selectedRating}\nComment: ${comment}`);
-            if (selectedRating == 5) {
-                alert('Book added to favorites!');
-            }
             // Reset modal
             selectedRating = 0;
             commentText.value = '';
@@ -50,6 +68,20 @@ document.addEventListener('DOMContentLoaded', function () {
             modal.hide();
         } else {
             alert('Please provide a rating and a comment.');
+        }
+    });
+
+    // Add book to favorites list
+    addToFavoritesButton.addEventListener('click', function () {
+        const bookTitle = localStorage.getItem('currentBookTitle'); //may need to change this based on what local storage is named
+        if (bookTitle) {
+            const favoritesList = document.getElementById('favorites-list');
+            const listItem = document.createElement('li');
+            listItem.textContent = bookTitle;
+            favoritesList.appendChild(listItem);
+            alert('Book added to favorites!');
+        } else {
+            alert('No book titles found in local storage.');
         }
     });
 });
