@@ -1,17 +1,18 @@
+/*
 a {
     text-decoration: none;
-  }
+}
+*/
+body {
+  background-image: url('./assets/image.png'); /* Replace with your image URL */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  height: 100vh;
+}
 
-  body {
-    background-image: url('./assets/image.png'); /* Replace with your image URL */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: 0;
-    height: 100vh;
-    }
-
-    /* Styling for the "To Read" column */
+/* Styling for the "To Read" column */
 #to-read {
   position: absolute; /* Absolute positioning for precise placement */
   top: 10%; /* Position from the top (adjustable) */
@@ -60,4 +61,75 @@ a {
  
 .five {
   color: gold;
+}
+
+/*Code made on 11-26-2024*/
+aside {
+  flex: 1; /* Flex property to control the width of the aside element */
+  background-color: #f8f9fa; /* Light gray background color */
+  padding: 20px; /* Padding around the content */
+  height: 50px; /* Full height of the viewport */
+}
+
+footer {
+  position: absolute;/* Fixed positioning to stick to the bottom of the viewport */
+  width: 100%; /* Full width of the viewport */
+  bottom: 0; /* Align with the bottom of the viewport */
+  padding: 5px; /* Padding around the content */
+  text-align: center; /* Center-align the text */
+  background: #fff; /* Dark background color */
+  color: #000; /* White text color */
+}
+
+main {
+  display: flex; /* Flexbox layout for the main content */
+  flex-wrap: wrap; /* Allow content to wrap to the next line */
+  margin-top: 2%; /* Margin from the top of the viewport */
+  justify-content: center; /* Center-align the content */
+}
+
+button {
+  /*align the button to left temporarily*/
+  float: left;
+}
+
+/*Styling for social media icons*/
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 2px;
+  border-radius: 50%;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
+.fa-instagram {
+  color: white;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.fa-x-twitter {
+  color: white;
+  background-color: #000;
 }
