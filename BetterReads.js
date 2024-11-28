@@ -143,6 +143,3 @@ document.getElementById('save-book').addEventListener('click', function() {
     // Save books when the page is unloaded
     window.addEventListener('beforeunload', saveBooksToLocalStorage);
   });
-
-
-});
