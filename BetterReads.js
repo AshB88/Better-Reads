@@ -85,3 +85,64 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 });
+
+// Handles the "Add Book" button click.
+document.getElementById('save-book').addEventListener('click', function() {
+    const title = document.getElementById('book-title').value;
+    const summary = document.getElementById('book-summary').value;
+
+    if (title && summary) {
+      const bookList = document.getElementById('book-list-ul');
+      const listItem = document.createElement('li');
+      listItem.className = 'list-group-item';
+      listItem.innerHTML = `<strong>${title}</strong>: ${summary}`;
+      bookList.appendChild(listItem);
+
+      // Sort the list alphabetically
+      const items = Array.from(bookList.getElementsByTagName('li'));
+      items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+      bookList.innerHTML = '';
+      items.forEach(item => bookList.appendChild(item));
+
+      // Clear the input fields
+      document.getElementById('book-title').value = '';
+      document.getElementById('book-summary').value = '';
+
+      // Close the modal
+      const modal = bootstrap.Modal.getInstance(document.getElementById('addBookModal'));
+      modal.hide();
+    }
+  });
+
+  // Load saved books from localStorage
+  document.addEventListener('DOMContentLoaded', function() {
+    const savedBooks = JSON.parse(localStorage.getItem('books')) || [];
+    const bookList = document.getElementById('book-list-ul');
+    savedBooks.forEach(book => {
+      const listItem = document.createElement('li');
+      listItem.className = 'list-group-item';
+      listItem.innerHTML = `<strong>${book.title}</strong>: ${book.summary}`;
+      bookList.appendChild(listItem);
+    });
+
+    // Save books to localStorage
+    function saveBooksToLocalStorage() {
+        const bookList = document.getElementById('book-list-ul');
+        const books = [];
+        bookList.querySelectorAll('li').forEach(item => {
+            const title = item.querySelector('strong').textContent;
+            const summary = item.textContent.replace(`${title}: `, '');
+            books.push({ title, summary });
+        });
+        localStorage.setItem('books', JSON.stringify(books));
+    }
+
+    // Save books when a new book is added
+    document.getElementById('save-book').addEventListener('click', saveBooksToLocalStorage);
+
+    // Save books when the page is unloaded
+    window.addEventListener('beforeunload', saveBooksToLocalStorage);
+  });
+
+
+});
