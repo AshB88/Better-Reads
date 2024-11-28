@@ -19,49 +19,6 @@
   </head>
   <body>
 
-<!-- Button to trigger the "Add Book" modal -->
-<div id="toRead-List">
-  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
-    Add Book
-  </button>
-
-  <!-- "Add Book" Modal Structure -->
-  <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h5 class="modal-title" id="addBookModalLabel">Add a New Book</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        
-        <!-- Modal Body -->
-        <div class="modal-body">
-          <!-- Book Title Input -->
-          <div class="mb-3">
-            <label for="book-title" class="form-label">Book Title:</label>
-            <input type="text" class="form-control" id="book-title" placeholder="Enter the book title">
-          </div>
-          
-          <!-- Book Summary Input -->
-          <div class="mb-3">
-            <label for="book-summary" class="form-label">Book Summary:</label>
-            <textarea class="form-control" id="book-summary" rows="3" placeholder="Write a brief summary..."></textarea>
-          </div>
-        </div>
-        
-        <!-- Modal Footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="save-book">Save Book</button>
-        </div>
-      </div>
-    </div> 
-  </div>
-  </div>
-
-
     <h1 class="text-center banner bg-primary py-3" id="sitelogo" style="font-family: Syncopate;">Better Reads</h1> <!-- Title of the page -->
    
     <main> <!--11/26/24-->
@@ -72,9 +29,49 @@
         <!-- "To Read" Column -->
           <div id="to-read" class="col-12 col-md-6 col-lg-5 mb-3">
             <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
-            <ul id="book-list-ul"></ul><!-- Container for the "To Read" list -->
+            <!-- Button to trigger the "Add Book" modal -->
+            <div id="toRead-List">
+              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
+              Add Book
+              </button>
+
+            <!-- "Add Book" Modal Structure -->
+            <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
         
+                  <!-- Modal Header -->
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="addBookModalLabel">Add a New Book</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+        
+                  <!-- Modal Body -->
+                  <div class="modal-body">
+                    <!-- Book Title Input -->
+                    <div class="mb-3">
+                      <label for="book-title" class="form-label">Book Title:</label>
+                      <input type="text" class="form-control" id="book-title" placeholder="Enter the book title">
+                    </div>
+          
+                  <!-- Book Summary Input -->
+                    <div class="mb-3">
+                      <label for="book-summary" class="form-label">Book Summary:</label>
+                      <textarea class="form-control" id="book-summary" rows="3" placeholder="Write a brief summary..."></textarea>
+                    </div>
+                  </div>
+        
+                  <!-- Modal Footer -->
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save-book">Save Book</button>
+                  </div>
+                </div>
+              </div> 
+            </div>
           </div>
+          <ul id="book-list-ul"></ul><!-- Container for the "To Read" list -->
+        </div>
 
 
         <!-- "Completed" Column -->
