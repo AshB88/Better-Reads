@@ -8,11 +8,64 @@
     <link rel="stylesheet" type="text/css" href="./reset.css"/>
     <link rel="stylesheet" type="text/css" href="./style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    <!--OVERPASS MONO FONT-->
+     <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Overpass+Mono:wght@300..700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+
+
+
+
   </head>
   <body>
-    <h1 class="text-center banner bg-primary py-3" style="font-family: Syncopate;">Better Reads</h1> <!-- Title of the page -->
-    
+
+<!-- Button to trigger the "Add Book" modal -->
+<div id="toRead-List">
+  <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
+    Add Book
+  </button>
+
+  <!-- "Add Book" Modal Structure -->
+  <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title" id="addBookModalLabel">Add a New Book</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <!-- Modal Body -->
+        <div class="modal-body">
+          <!-- Book Title Input -->
+          <div class="mb-3">
+            <label for="book-title" class="form-label">Book Title:</label>
+            <input type="text" class="form-control" id="book-title" placeholder="Enter the book title">
+          </div>
+          
+          <!-- Book Summary Input -->
+          <div class="mb-3">
+            <label for="book-summary" class="form-label">Book Summary:</label>
+            <textarea class="form-control" id="book-summary" rows="3" placeholder="Write a brief summary..."></textarea>
+          </div>
+        </div>
+        
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save-book">Save Book</button>
+        </div>
+      </div>
+    </div> 
+  </div>
+  </div>
+
+
+    <h1 class="text-center banner bg-primary py-3" id="sitelogo" style="font-family: Syncopate;">Better Reads</h1> <!-- Title of the page -->
+   
     <main> <!--11/26/24-->
+
 
       <div class="container text-center">
         <div class="row">
@@ -21,19 +74,31 @@
             <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
           </div>
 
+
         <!-- "Completed" Column -->
           <div id="completed" class="col-12 col-md-6 col-lg-5 mb-3">
             <h2>Completed:</h2> <!-- Heading for the "Completed" section -->
           </div>
         </div>
       </div>
-    
+   
+
 
       <!-- "Favorites" Column -->
       <aside id="favorites" class="col-12 col-md-2 col-lg-2 position-absolute">
         <h2>Favorites' List</h2> <!-- Heading for the "Favorites" section -->
+       
+ 
+          <ol> <!-- Container for the favorite's list -->
+          <li> x</li>
+          <li> x</li>
+          <li> x</li>
+          <li> x</li>
+          </ol>
+         
       </aside>
     </main> <!--11/26/24-->
+
 
     <footer class="text-end">
         <nav>
@@ -45,21 +110,22 @@
         </nav>
       <!--Create a modal that appears when a book is completed. The modal will contain a star system, comment section, and an option to add to favorites if 5 stars-->
 
+
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookCompletionModal">
         Mark Book as Completed
         </button>
-        
+       
         <!-- Modal Structure -->
         <div class="modal fade" id="bookCompletionModal" tabindex="-1" aria-labelledby="bookCompletionModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
-        
+       
         <!-- Modal Header -->
         <div class="modal-header">
         <h5 class="modal-title" id="bookCompletionModalLabel">Book Completion Review</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        
+       
         <!-- Modal Body -->
         <div class="modal-body">
         <!-- Star Rating System -->
@@ -73,20 +139,20 @@
             <span class="star" data-value="5" onclick="gfg(5)">&#9733;</span>
           </div>
         </div>
-        
+       
         <!-- Comment Section -->
         <div class="mb-3">
           <label for="comment-text" class="form-label">Your Comments:</label>
           <textarea class="form-control" id="comment-text" rows="3" placeholder="Leave your thoughts on the book..."></textarea>
         </div>
-        
+       
         <!-- Add to Favorites Button (Hidden by default) -->
         <div class="mb-3" id="favorites-section" style="display: none;">
           <p>If you gave the book 5 stars, would you like to add it to your favorites?</p>
           <button type="button" class="btn btn-success">Add to Favorites</button>
           </div>
         </div>
-        
+       
         <!-- Modal Footer -->
         <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -95,6 +161,7 @@
         </div>
         </div>
         </div>
+
 
     </footer>
     <script src="./BetterReads.js" type="text/javascript"></script>
