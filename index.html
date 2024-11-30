@@ -27,7 +27,7 @@
       <div class="container text-center">
         <div class="row">
         <!-- "To Read" Column -->
-          <div id="to-read" class="col-12 col-md-6 col-lg-5 mb-3">
+          <div id="to-read" class="col-12 col-md-4 col-lg-4 mb-3">
             <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
             <!-- Button to trigger the "Add Book" modal -->
             <div id="toRead-List">
@@ -36,7 +36,7 @@
               </button>
 
             <!-- "Add Book" Modal Structure -->
-            <div class="modal fade" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+            <div class="modal" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
         
@@ -75,8 +75,9 @@
 
 
         <!-- "Completed" Column -->
-          <div id="completed" class="col-12 col-md-6 col-lg-5 mb-3">
+          <div id="completed" class="col-12 col-md-5 col-lg-5 mb-3">
             <h2>Completed:</h2> <!-- Heading for the "Completed" section -->
+            <ul id="completed-list-ul"></ul> <!-- Container for the "Completed" list -->
           </div>
         </div>
       </div>
@@ -84,17 +85,9 @@
 
 
       <!-- "Favorites" Column -->
-      <aside id="favorites" class="col-12 col-md-2 col-lg-2 position-absolute">
+      <aside id="favorites" class="col-12 col-md-3 col-lg-3 position-absolute">
         <h2>Favorites' List</h2> <!-- Heading for the "Favorites" section -->
-       
- 
-          <ol> <!-- Container for the favorite's list -->
-          <li> x</li>
-          <li> x</li>
-          <li> x</li>
-          <li> x</li>
-          </ol>
-         
+        <ul id="favorites-list-ul"></ul>
       </aside>
     </main> <!--11/26/24-->
 
@@ -110,12 +103,12 @@
       <!--Create a modal that appears when a book is completed. The modal will contain a star system, comment section, and an option to add to favorites if 5 stars-->
 
 
-      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookCompletionModal">
+      <button id="completed-button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookCompletionModal">
         Mark Book as Completed
         </button>
        
         <!-- Modal Structure -->
-        <div class="modal fade" id="bookCompletionModal" tabindex="-1" aria-labelledby="bookCompletionModalLabel" aria-hidden="true">
+        <div class="modal" id="bookCompletionModal" tabindex="-1" aria-labelledby="bookCompletionModalLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
        
@@ -130,13 +123,13 @@
         <!-- Star Rating System -->
         <div class="mb-3">
           <label for="star-rating" class="form-label">Rate the Book:</label>
-          <div id="star-rating" class="star-rating">
-            <span class="star" data-value="1" onclick="gfg(1)">&#9733;</span>
-            <span class="star" data-value="2" onclick="gfg(2)">&#9733;</span>
-            <span class="star" data-value="3" onclick="gfg(3)">&#9733;</span>
-            <span class="star" data-value="4" onclick="gfg(4)">&#9733;</span>
-            <span class="star" data-value="5" onclick="gfg(5)">&#9733;</span>
-          </div>
+          <div class="star-rating">
+            <span class="star" data-value="1">&#9733;</span>  <!-- 1 star -->
+            <span class="star" data-value="2">&#9733;</span>  <!-- 2 stars -->
+            <span class="star" data-value="3">&#9733;</span>  <!-- 3 stars -->
+            <span class="star" data-value="4">&#9733;</span>  <!-- 4 stars -->
+            <span class="star" data-value="5">&#9733;</span>  <!-- 5 stars -->
+        </div>
         </div>
        
         <!-- Comment Section -->
@@ -148,7 +141,7 @@
         <!-- Add to Favorites Button (Hidden by default) -->
         <div class="mb-3" id="favorites-section" style="display: none;">
           <p>If you gave the book 5 stars, would you like to add it to your favorites?</p>
-          <button type="button" class="btn btn-success">Add to Favorites</button>
+          <button type="button" id="add-to-favorites" class="btn btn-success">Add to Favorites</button>
           </div>
         </div>
        

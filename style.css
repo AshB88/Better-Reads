@@ -90,31 +90,23 @@ body {
 
 
 /* Styling for the star rating system */
+/* Basic styling for the stars */
 .star {
-  font-size: 20;
-  cursor: pointer;
-}
- 
-.one {
-  color: gold;
-}
- 
-.two {
-  color: gold;
-}
- 
-.three {
-  color: gold;
-}
- 
-.four {
-  color: gold;
-}
- 
-.five {
-  color: gold;
+  font-size: 30px;            /* Size of the stars */
+  color: lightgray;           /* Default color for the stars */
+  cursor: pointer;           /* Change cursor to a pointer on hover */
+  transition: color 0.3s ease; /* Smooth transition for color change */
 }
 
+/* Styling for selected stars */
+.star.selected {
+  color: gold;               /* Color for the selected stars */
+}
+
+/* Optional: Hover effect to change the color of stars when hovered */
+.star:hover {
+  color: orange;             /* Highlight the star when hovered */
+}
 
 /*Code made on 11-26-2024*/
 aside {
@@ -144,7 +136,7 @@ main {
 }
 
 
-button {
+#completed-button {
   /*align the button to left temporarily*/
   float: left;
 }
