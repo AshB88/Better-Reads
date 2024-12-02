@@ -153,7 +153,7 @@ function initializeBetterReads() {
             localStorage.setItem('completedBooks', JSON.stringify(completedBooks));
             localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks)); // Save favorites to localStorage
         }
-
+ 
         // Add book to a list
         function addBookToList(book, list, withCheckbox, rating) {
             const listItem = document.createElement('li');
@@ -182,6 +182,34 @@ function initializeBetterReads() {
         }
     });
 }
+
+document.getElementById('remove-book').addEventListener('click', function() {
+    // Get the selected book title
+    const bookTitle = prompt('Enter the title of the book to remove:');
+    if (!bookTitle) return;
+
+    // Remove from "To Read" list
+    const toReadList = document.getElementById('book-list-ul');
+    const toReadItems = toReadList.getElementsByTagName('li');
+    for (let i = 0; i < toReadItems.length; i++) {
+  if (toReadItems[i].textContent.includes(bookTitle)) {
+    toReadList.removeChild(toReadItems[i]);
+    return;
+  }
+    }
+
+    // Remove from "Completed" list
+    const completedList = document.getElementById('completed-list-ul');
+    const completedItems = completedList.getElementsByTagName('li');
+    for (let i = 0; i < completedItems.length; i++) {
+  if (completedItems[i].textContent.includes(bookTitle)) {
+    completedList.removeChild(completedItems[i]);
+    return;
+  }
+    }
+
+    alert('Book not found in any list.');
+  });
 
 // Call the function to initialize the functionality
 initializeBetterReads();

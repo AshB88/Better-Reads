@@ -14,7 +14,7 @@
      <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Overpass+Mono:wght@300..700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 
 
-
+ 
 
   </head>
   <body>
@@ -30,10 +30,7 @@
           <div id="to-read" class="col-12 col-md-4 col-lg-4 mb-3">
             <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
             <!-- Button to trigger the "Add Book" modal -->
-            <div id="toRead-List">
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
-              Add Book
-              </button>
+            
 
             <!-- "Add Book" Modal Structure -->
             <div class="modal" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
@@ -100,6 +97,10 @@
           <a href="#" class="fa fa-reddit"></a>
           <a href="#" class="fa fa-x-twitter">𝕏</a>
         </nav>
+
+        <button id="add-book" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
+          Add Book
+          </button>
       <!--Create a modal that appears when a book is completed. The modal will contain a star system, comment section, and an option to add to favorites if 5 stars-->
 
 
@@ -153,6 +154,12 @@
         </div>
         </div>
         </div>
+
+
+      <!-- "Remove Book" Button -->
+      <div class="mt-3">
+       <button type="button" class="btn btn-danger" id="remove-book">Remove Book</button>
+      </div>
 
 
     </footer>
