@@ -2,39 +2,39 @@
 function initializeBetterReads() {
     document.addEventListener('DOMContentLoaded', function () {
         const commentText = document.getElementById('comment-text');
-        const favoritesSection = document.getElementById('favorites-section');
+        const favoritesSection = document.getElementById('favorites-section'); // Section containing the "Add to Favorites" butto
         const submitReviewButton = document.getElementById('submit-review');
         const bookList = document.getElementById('book-list-ul');
         const completedList = document.getElementById('completed-list-ul');
-        const favoritesList = document.getElementById('favorites-list-ul');
+        const favoritesList = document.getElementById('favorites-list-ul'); // The favorites list
         const stars = document.querySelectorAll('.star');
         let selectedRating = 0;
 
         // Load saved data from localStorage
         const savedBooks = JSON.parse(localStorage.getItem('books')) || [];
         const completedBooks = JSON.parse(localStorage.getItem('completedBooks')) || [];
-        const favoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || [];
+        const favoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || [];  // Load favorites
 
         // Populate the lists from localStorage
         savedBooks.forEach(book => addBookToList(book, bookList, true));
         completedBooks.forEach(book => addBookToList(book, completedList, false, book.rating)); // Pass rating for completed books
         favoriteBooks.forEach(book => addBookToList(book, favoritesList, false));
 
-        // Star rating system
+        // Handle star rating click
         stars.forEach(star => {
             star.addEventListener('click', function () {
                 selectedRating = this.getAttribute('data-value');
                 updateStarRating(selectedRating);
 
                 if (selectedRating == 5) {
-                    favoritesSection.style.display = 'block';
+                    favoritesSection.style.display = 'block'; // Show "Add to Favorites" button when rated 5 stars
                 } else {
-                    favoritesSection.style.display = 'none';
+                    favoritesSection.style.display = 'none'; // Hide "Add to Favorites" button for non-5 star ratings
                 }
             });
         });
 
-        // Update star rating
+        // Update star rating display
         function updateStarRating(rating) {
             stars.forEach(star => {
                 if (star.getAttribute('data-value') <= rating) {
@@ -75,7 +75,7 @@ function initializeBetterReads() {
             modal.hide();
         });
 
-        // Handle the "Save Book" button click
+        // Handles the "Add Book" button click
         document.getElementById('save-book').addEventListener('click', function () {
             const title = document.getElementById('book-title').value;
             const summary = document.getElementById('book-summary').value;
@@ -151,7 +151,7 @@ function initializeBetterReads() {
 
             localStorage.setItem('books', JSON.stringify(books));
             localStorage.setItem('completedBooks', JSON.stringify(completedBooks));
-            localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks));
+            localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks)); // Save favorites to localStorage
         }
 
         // Add book to a list
