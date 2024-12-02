@@ -118,13 +118,12 @@ aside {
 
 
 footer {
-  position: absolute;/* Fixed positioning to stick to the bottom of the viewport */
-  width: 100%; /* Full width of the viewport */
+  position: fixed;/* Fixed positioning to stick to the bottom of the viewport */
   bottom: 0; /* Align with the bottom of the viewport */
+  right: 0; /* Align with the right side of the viewport */
   padding: 5px; /* Padding around the content */
   text-align: center; /* Center-align the text */
-  background: #fff; /* Dark background color */
-  color: #000; /* White text color */
+  color: #000; /* Black text color */
 }
 
 
