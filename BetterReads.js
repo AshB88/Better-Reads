@@ -1,3 +1,4 @@
+// Initialize on page load
 function initializeBetterReads() {
     document.addEventListener('DOMContentLoaded', function () {
         const commentText = document.getElementById('comment-text');
@@ -9,18 +10,14 @@ function initializeBetterReads() {
         const stars = document.querySelectorAll('.star');
         let selectedRating = 0;
 
-        // Load books from localStorage
+        // Load saved data from localStorage
         const savedBooks = JSON.parse(localStorage.getItem('books')) || [];
         const completedBooks = JSON.parse(localStorage.getItem('completedBooks')) || [];
         const favoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || []; // Load favorites
 
-        // Populate "To Read" list
+        // Populate the lists from localStorage
         savedBooks.forEach(book => addBookToList(book, bookList, true));
-
-        // Populate "Completed" list
-        completedBooks.forEach(book => addBookToList(book, completedList, false));
-
-        // Populate "Favorites" list
+        completedBooks.forEach(book => addBookToList(book, completedList, false, book.rating)); // Pass rating for completed books
         favoriteBooks.forEach(book => addBookToList(book, favoritesList, false));
 
         // Handle star rating click
@@ -28,14 +25,6 @@ function initializeBetterReads() {
             star.addEventListener('click', function () {
                 selectedRating = this.getAttribute('data-value');
                 updateStarRating(selectedRating);
-
-                // Get the book title from the modal input field
-                const bookTitleInput = document.getElementById('book-title-modal');
-                if (bookTitleInput) {
-                    currentBookTitle = bookTitleInput.value.trim();
-                } else {
-                    currentBookTitle = ''; // Reset if no input field found
-                }
 
                 if (selectedRating == 5) {
                     favoritesSection.style.display = 'block'; // Show "Add to Favorites" button when rated 5 stars
@@ -56,22 +45,34 @@ function initializeBetterReads() {
             });
         }
 
-        // Handle review submission
+        // Handle review submission (and move completed books)
         submitReviewButton.addEventListener('click', function () {
-            const comment = commentText.value;
-            if (selectedRating > 0 && comment.trim() !== '') {
-                alert(`Rating: ${selectedRating}\nComment: ${comment}`);
-                // Reset modal
-                selectedRating = 0;
-                commentText.value = '';
-                updateStarRating(0);
-                favoritesSection.style.display = 'none'; // Hide "Add to Favorites" section after review is submitted
-                // Close modal
-                const modal = bootstrap.Modal.getInstance(document.getElementById('bookCompletionModal'));
-                modal.hide();
-            } else {
-                alert('Please provide a rating and a comment.');
-            }
+            bookList.querySelectorAll('.book-checkbox').forEach(checkbox => {
+                if (checkbox.checked) {
+                    const listItem = checkbox.closest('li');
+                    const bookTitle = listItem.querySelector('strong').textContent;
+
+                    // Create a new completed list item with rating
+                    const completedListItem = document.createElement('li');
+                    completedListItem.className = 'list-group-item';
+                    completedListItem.innerHTML = `<strong>${bookTitle}</strong>: Rated ${selectedRating} star${selectedRating > 1 ? 's' : ''}`;
+                    completedList.appendChild(completedListItem);
+
+                    // Remove the book from the "To Read" list
+                    listItem.remove();
+                }
+            });
+
+            saveBooksToLocalStorage(); // Save the changes to localStorage
+
+            // Reset the form
+            selectedRating = 0;
+            commentText.value = '';
+            updateStarRating(0);
+            favoritesSection.style.display = 'none';
+
+            const modal = bootstrap.Modal.getInstance(document.getElementById('bookCompletionModal'));
+            modal.hide();
         });
 
         // Handles the "Add Book" button click
@@ -82,28 +83,50 @@ function initializeBetterReads() {
             if (title && summary) {
                 const listItem = document.createElement('li');
                 listItem.className = 'list-group-item';
-                listItem.innerHTML = `
-                    <input type="checkbox" class="book-checkbox" /> 
-                    <strong>${title}</strong>: ${summary}`;
+                listItem.innerHTML = `<input type="checkbox" class="book-checkbox" /> <strong>${title}</strong>: ${summary}`;
                 bookList.appendChild(listItem);
 
-                sortList(bookList); // Sort the list alphabetically
+                sortList(bookList);
 
+                // Clear the form
                 document.getElementById('book-title').value = '';
                 document.getElementById('book-summary').value = '';
 
+                // Hide the modal
                 const modal = bootstrap.Modal.getInstance(document.getElementById('addBookModal'));
                 modal.hide();
 
-                saveBooksToLocalStorage(); // Save after adding
+                saveBooksToLocalStorage(); // Save the new book to localStorage
             }
         });
 
-        // Save books to localStorage
+        // Add book to favorites (inside the modal)
+        const addToFavoritesButton = document.getElementById('add-to-favorites');
+        addToFavoritesButton.addEventListener('click', function () {
+            const selectedCheckbox = document.querySelector('#book-list-ul .book-checkbox:checked');
+            if (selectedCheckbox) {
+                const bookTitle = selectedCheckbox.closest('li').querySelector('strong').textContent;
+
+                const listItem = document.createElement('li');
+                listItem.className = 'list-group-item';
+                listItem.textContent = bookTitle;
+                favoritesList.appendChild(listItem);
+
+                console.log(`Added to favorites: ${bookTitle}`);
+
+                saveBooksToLocalStorage(); // Save to localStorage
+
+                alert('Book added to favorites!');
+            } else {
+                alert('Please select a book to add to favorites.');
+            }
+        });
+
+        // Save all lists to localStorage
         function saveBooksToLocalStorage() {
             const books = [];
             const completedBooks = [];
-            const favoritesBooks = [];
+            const favoriteBooks = [];
 
             bookList.querySelectorAll('li').forEach(item => {
                 const title = item.querySelector('strong').textContent;
@@ -113,25 +136,40 @@ function initializeBetterReads() {
 
             completedList.querySelectorAll('li').forEach(item => {
                 const title = item.querySelector('strong').textContent;
-                const summary = item.textContent.replace(`${title}: `, '').trim();
-                completedBooks.push({ title, summary });
+                const ratingMatch = item.textContent.match(/Rated (\d+) star/);
+                const rating = ratingMatch ? ratingMatch[1] : null;
+
+                if (title && rating) {
+                    completedBooks.push({ title, rating });
+                }
             });
 
             favoritesList.querySelectorAll('li').forEach(item => {
                 const title = item.textContent;
-                favoritesBooks.push({ title });
+                favoriteBooks.push({ title });
             });
 
             localStorage.setItem('books', JSON.stringify(books));
             localStorage.setItem('completedBooks', JSON.stringify(completedBooks));
-            localStorage.setItem('favoriteBooks', JSON.stringify(favoritesBooks)); // Save favorites to localStorage
+            localStorage.setItem('favoriteBooks', JSON.stringify(favoriteBooks)); // Save favorites to localStorage
         }
 
         // Add book to a list
-        function addBookToList(book, list, withCheckbox) {
+        function addBookToList(book, list, withCheckbox, rating) {
             const listItem = document.createElement('li');
             listItem.className = 'list-group-item';
-            listItem.innerHTML = `${withCheckbox ? '<input type="checkbox" class="book-checkbox" /> ' : ''}<strong>${book.title}</strong>: ${book.summary || book.title}`;
+
+            if (list === completedList && rating) {
+                // If this is a completed book, show the rating
+                listItem.innerHTML = `<strong>${book.title}</strong>: Rated ${rating} star${rating > 1 ? 's' : ''}`;
+            } else if (list === favoritesList) {
+                // Favorites list only shows the title
+                listItem.textContent = book.title;
+            } else {
+                // "To Read" list shows title and summary
+                listItem.innerHTML = `${withCheckbox ? '<input type="checkbox" class="book-checkbox" /> ' : ''}<strong>${book.title}</strong>: ${book.summary || ''}`;
+            }
+
             list.appendChild(listItem);
         }
 
@@ -142,36 +180,6 @@ function initializeBetterReads() {
             list.innerHTML = '';
             items.forEach(item => list.appendChild(item));
         }
-
-        // Mark books as completed
-        submitReviewButton.addEventListener('click', function () {
-            bookList.querySelectorAll('.book-checkbox').forEach(checkbox => {
-                if (checkbox.checked) {
-                    const listItem = checkbox.closest('li');
-                    listItem.removeChild(checkbox); // Remove the checkbox
-                    completedList.appendChild(listItem);
-                }
-            });
-
-            saveBooksToLocalStorage();
-        });
-        // Add book to favorites (inside the modal)
-        const addToFavoritesButton = document.getElementById('add-to-favorites'); // Button inside modal to add to favorites
-        addToFavoritesButton.addEventListener('click', function () {
-            const selectedBook = document.querySelector('#book-list-ul .book-checkbox:checked');
-            if (selectedBook) {
-                const listItem = document.createElement('li');
-                const bookTitle = selectedBook.closest('li').querySelector('strong').textContent;
-                listItem.textContent = bookTitle;
-                favoritesList.appendChild(listItem);
-
-                // Save the favorites list to localStorage
-                saveBooksToLocalStorage();
-                alert('Book added to favorites!');
-            } else {
-                alert('Please select a book to add to favorites.');
-            }
-        });
     });
 }
 
