@@ -31,10 +31,13 @@
             <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
             <!-- Button to trigger the "Add Book" modal -->
             <div id="toRead-List">
-              <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
-              Add Book
+              <button type="button" id="add-book" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
+                Add Book
               </button>
-
+              <!-- "Added a Section tag to the "To Read" column to contain the unordered list of books -->
+              <Section>
+                  <ul id="book-list-ul"></ul><!-- Container for the "To Read" list -->
+              </Section>
             <!-- "Add Book" Modal Structure -->
             <div class="modal" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
               <div class="modal-dialog">
