@@ -17,7 +17,7 @@ body {
 #to-read {
   position: absolute; /* Absolute positioning for precise placement */
   top: 10%; /* Position from the top (adjustable) */
-  left: 10%; /* Position from the left (adjustable) */
+  left: 17%; /* Position from the left (adjustable) */
 }
 
 
@@ -86,9 +86,6 @@ body {
 
 
 
-
-
-
 /* Styling for the star rating system */
 /* Basic styling for the stars */
 .star {
@@ -137,7 +134,10 @@ main {
 
 #completed-button {
   /*align the button to left temporarily*/
-  float: left;
+  position: fixed;
+  left: 180px;
+  bottom: 20px;
+  padding: 5px;
 }
 
 
@@ -188,8 +188,24 @@ main {
   background-color: #000;
 }
 
-#toRead-List {
+
+
+footer #remove-book {
+  position: fixed;
+  left: 50px;
+  bottom: 20px;
+  padding: 5px;
+}
+
+footer #add-book {
+  position: fixed;
+  left: 385px;
+  bottom: 20px;
+  padding: 5px;
+}
+
+#book-list-ul {
   position: absolute; /* Absolute positioning for precise placement */
-  top: 18.5%; /* Position from the top (adjustable) */
-  left: 35%; /* Position from the left (adjustable) */
+  top: 0%; /* Position from the top (adjustable) */
+  left: 23%; /* Position from the left (adjustable) */
 }
