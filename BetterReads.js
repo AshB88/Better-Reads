@@ -2,7 +2,7 @@
 function initializeBetterReads() {
     document.addEventListener('DOMContentLoaded', function () {
         const commentText = document.getElementById('comment-text');
-        const favoritesSection = document.getElementById('favorites-section'); // Section containing the "Add to Favorites" butto
+        const favoritesSection = document.getElementById('favorites-section'); // Section containing the "Add to Favorites" button
         const submitReviewButton = document.getElementById('submit-review');
         const bookList = document.getElementById('book-list-ul');
         const completedList = document.getElementById('completed-list-ul');
@@ -13,7 +13,7 @@ function initializeBetterReads() {
         // Load saved data from localStorage
         const savedBooks = JSON.parse(localStorage.getItem('books')) || [];
         const completedBooks = JSON.parse(localStorage.getItem('completedBooks')) || [];
-        const favoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || [];  // Load favorites
+        const favoriteBooks = JSON.parse(localStorage.getItem('favoriteBooks')) || []; // Load favorites
 
         // Populate the lists from localStorage
         savedBooks.forEach(book => addBookToList(book, bookList, true));
