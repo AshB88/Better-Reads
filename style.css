@@ -208,6 +208,7 @@ footer #add-book {
   position: absolute; /* Absolute positioning for precise placement */
   top: 40px ; /* Position from the top (adjustable) */
   left: 23%; /* Position from the left (adjustable) */
-  text-align: left
-
+  text-align: left;
+  height: 60vh; /* Set a fixed height for the list */
+  overflow-y: scroll; /* Add a vertical scroll bar for more content */
 }
