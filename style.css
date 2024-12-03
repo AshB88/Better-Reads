@@ -1,8 +1,3 @@
-/*
-a {
-    text-decoration: none;
-}
-*/
 body {
   background-image: url('./assets/image.png'); /* Replace with your image URL */
   background-size: cover;
@@ -76,6 +71,9 @@ body {
   font-style: normal;
   font-size: 1.2rem;
   margin-top: 4.75rem;
+}
+
+#to-read h2, #completed h2, #favorites h2 {
   text-decoration: underline;
 }
 
