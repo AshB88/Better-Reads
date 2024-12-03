@@ -211,4 +211,6 @@ footer #add-book {
   text-align: left;
   height: 60vh; /* Set a fixed height for the list */
   overflow-y: scroll; /* Add a vertical scroll bar for more content */
+  overflow-x: scroll; /* Add a horizontal scroll bar for more content */
+  width: 70%; /* Set a fixed width for the list */ 
 }
