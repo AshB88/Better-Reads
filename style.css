@@ -212,3 +212,149 @@ footer #add-book {
   overflow-x: scroll; /* Add a horizontal scroll bar for more content */
   width: 70%; /* Set a fixed width for the list */ 
 }
+
+@media (max-width: 768px) {
+  #book-list-ul {
+    width: 100%;
+    left: 0;
+  }
+  
+}
+
+/* Ensure the new parent elements use Flexbox */
+#new-parent-to-read, #new-parent-completed, #new-parent-favorites {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Media query for screens 768px or smaller */
+@media (max-width: 768px) {
+  
+  body {
+    background-image: url('./assets/image.png'); /* Replace with your image URL */
+    background-repeat: repeat-y; /* Repeat the background image vertically */
+    background-size: cover; /* Ensure the background image covers the entire element */
+    background-position: center; /* Center the background image */
+  }
+  
+
+  main {
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+    max-height: 100vh; /* Set a maximum height to ensure scrolling is enabled when content exceeds this height */
+  }
+
+  #to-read, #completed, #favorites {
+    margin-bottom: 200px; /* Add spacing between the lists */
+  }
+
+  #new-parent-to-read {
+    display: block;
+    flex-direction: column;
+    align-items: top;
+  }
+  
+  
+  #new-parent-completed {
+    display: block;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  #new-parent-favorites {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #to-read {
+    position: center;
+    top: 4vh;
+    left: 185px;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    height: 60%;
+  
+  
+  }
+
+  #completed {
+    position: center;
+    top: 105vh;
+    left: 185px;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    width: 300px;
+    height: 60%;
+  }
+  
+
+  #favorites {  
+    position: center;
+    top: 205vh;
+    right: 185px;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    height: 60%;
+  }
+}
+
+@media (max-width: 338px) {
+
+  #new-parent-to-read {
+    display: block;
+    flex-direction: column;
+    align-items: top;
+    right: 59px;
+  }
+  #to-read, #completed, #favorites {
+    margin-bottom: 100px; /* Add spacing between the lists */
+  }
+
+  #to-read {
+    position: center;
+    top: 4vh;
+    right: 20px;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    height: 60%;
+  
+  
+  }
+  #completed {
+    position: center;
+    top: 105vh;
+    left: 185px;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    width: 300px;
+    height: 60%;
+  }
+
+  #favorites {  
+    position: center;
+    top: 205vh;
+    right: 185px;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    height: 60%;
+  }
+}

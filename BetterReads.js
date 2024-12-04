@@ -243,3 +243,46 @@ for (let i = 0; i < favoritesItems.length; i++) {
 // Call the function to initialize the functionality
 initializeBetterReads();
  
+function moveLists() {
+    const toReadList = document.getElementById('to-read');
+    const completedList = document.getElementById('completed');
+    const favoritesList = document.getElementById('favorites');
+  
+    const newParentToRead = document.getElementById('new-parent-to-read'); // Replace with the ID of the new parent element for to-read
+    const newParentCompleted = document.getElementById('new-parent-completed'); // Replace with the ID of the new parent element for completed
+    const newParentFavorites = document.getElementById('new-parent-favorites'); // Replace with the ID of the new parent element for favorites
+  
+    const originalParentToRead = document.getElementById('original-parent-to-read'); // Replace with the ID of the original parent element for to-read
+    const originalParentCompleted = document.getElementById('original-parent-completed'); // Replace with the ID of the original parent element for completed
+    const originalParentFavorites = document.getElementById('original-parent-favorites'); // Replace with the ID of the original parent element for favorites
+  
+    if (window.innerWidth <= 768) {
+      // Move to new parent for smaller screens
+      if (newParentToRead && !newParentToRead.contains(toReadList)) {
+        newParentToRead.appendChild(toReadList);
+      }
+      if (newParentCompleted && !newParentCompleted.contains(completedList)) {
+        newParentCompleted.appendChild(completedList);
+      }
+      if (newParentFavorites && !newParentFavorites.contains(favoritesList)) {
+        newParentFavorites.appendChild(favoritesList);
+      }
+    } else {
+      // Move back to original parent for larger screens
+      if (originalParentToRead && !originalParentToRead.contains(toReadList)) {
+        originalParentToRead.appendChild(toReadList);
+      }
+      if (originalParentCompleted && !originalParentCompleted.contains(completedList)) {
+        originalParentCompleted.appendChild(completedList);
+      }
+      if (originalParentFavorites && !originalParentFavorites.contains(favoritesList)) {
+        originalParentFavorites.appendChild(favoritesList);
+      }
+    }
+  }
+  
+  // Listen for the resize event
+  window.addEventListener('resize', moveLists);
+  
+  // Call the function initially to set the correct parent on page load
+  moveLists();
