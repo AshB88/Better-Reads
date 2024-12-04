@@ -214,7 +214,7 @@ footer #add-book {
   padding: 5px;
 }
 
-#book-list-ul, #completed-list-ul {
+#book-list-ul {
   position: absolute; /* Absolute positioning for precise placement */
   top: 40px ; /* Position from the top (adjustable) */
   left: 23%; /* Position from the left (adjustable) */
@@ -222,6 +222,16 @@ footer #add-book {
   height: 60vh; /* Set a fixed height for the list */
   width: 70%; /* Set a fixed width for the list */ 
 }
+
+#completed-list-ul{
+  position: absolute; /* Absolute positioning for precise placement */
+  top: 40px ; /* Position from the top (adjustable) */
+  left: 23%; /* Position from the left (adjustable) */
+  text-align: left;
+  height: 60vh; /* Set a fixed height for the list */
+  width: 70%; /* Set a fixed width for the list */ 
+}
+
 
 #favorites-list-ul {
   position: absolute; /* Absolute positioning for precise placement */
@@ -376,10 +386,6 @@ footer #add-book {
   }
 }
 
-#completed-list-ul{
-  left:-4%;
-}
-
 @media (max-width: 292px) {
 
   #new-parent-to-read {
@@ -427,4 +433,6 @@ footer #add-book {
     width: 200px;
     height: 60%;
   }
-}
+  #completed-list-ul{
+    left:-4%;
+}}
