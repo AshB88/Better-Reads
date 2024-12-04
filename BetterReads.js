@@ -230,3 +230,32 @@ function moveLists() {
   
   // Call the function initially to set the correct parent on page load
   moveLists();
+
+  // Call the function initially to set the correct parent on page load
+moveLists();
+
+
+// Function to toggle overflow classes
+function toggleOverflow() {
+    const bookList = document.getElementById('book-list-ul');
+    const favoritesList = document.getElementById('favorites-list-ul');
+    const completedList = document.getElementById('completed-list-ul');
+  
+    if (bookList) {
+      bookList.classList.add('hide-overflow');
+      bookList.classList.add('show-overflow');
+    }
+  
+    if (favoritesList) {
+      favoritesList.classList.add('hide-overflow');
+      favoritesList.classList.add('show-overflow');
+    }
+  
+    if (completedList) {
+      completedList.classList.add('hide-overflow');
+      completedList.classList.add('show-overflow');
+    }
+  }
+  
+  // Call the function to apply the classes
+  toggleOverflow();
