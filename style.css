@@ -8,6 +8,18 @@ body {
 }
 
 
+/* CSS to hide overflow */
+.hide-overflow {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+/* CSS to show overflow on hover */
+.show-overflow:hover {
+  overflow-y: scroll;
+  overflow-x: scroll;
+}
+
 /* Styling for the "To Read" column */
 #to-read {
   position: absolute; /* Absolute positioning for precise placement */
@@ -202,17 +214,23 @@ footer #add-book {
   padding: 5px;
 }
 
-#book-list-ul {
+#book-list-ul, #completed-list-ul {
   position: absolute; /* Absolute positioning for precise placement */
   top: 40px ; /* Position from the top (adjustable) */
   left: 23%; /* Position from the left (adjustable) */
   text-align: left;
   height: 60vh; /* Set a fixed height for the list */
-  overflow-y: scroll; /* Add a vertical scroll bar for more content */
-  overflow-x: scroll; /* Add a horizontal scroll bar for more content */
   width: 70%; /* Set a fixed width for the list */ 
 }
 
+#favorites-list-ul {
+  position: absolute; /* Absolute positioning for precise placement */
+  top: 40px ; /* Position from the top (adjustable) */
+  right: 23%; /* Position from the right (adjustable) */
+  text-align: left;
+  height: 50vh; /* Set a fixed height for the list */
+  width: 60%; /* Set a fixed width for the list */ 
+}
 @media (max-width: 768px) {
   #book-list-ul {
     width: 100%;
@@ -272,7 +290,7 @@ footer #add-book {
   #to-read {
     position: center;
     top: 4vh;
-    left: 185px;
+    left: 35%;
     transform: none;
     padding: 10px;
     border-radius: 8px;
@@ -286,7 +304,7 @@ footer #add-book {
   #completed {
     position: center;
     top: 105vh;
-    left: 185px;
+    left: 35%;
     transform: none;
     padding: 10px;
     border-radius: 8px;
@@ -299,7 +317,7 @@ footer #add-book {
   #favorites {  
     position: center;
     top: 205vh;
-    right: 185px;
+    right: 35%;
     transform: none;
     padding: 10px;
     border-radius: 8px;
@@ -315,7 +333,6 @@ footer #add-book {
     display: block;
     flex-direction: column;
     align-items: top;
-    right: 59px;
   }
   #to-read, #completed, #favorites {
     margin-bottom: 100px; /* Add spacing between the lists */
@@ -324,7 +341,7 @@ footer #add-book {
   #to-read {
     position: center;
     top: 4vh;
-    right: 20px;
+    right: 25%;
     transform: none;
     padding: 10px;
     border-radius: 8px;
@@ -337,7 +354,7 @@ footer #add-book {
   #completed {
     position: center;
     top: 105vh;
-    left: 185px;
+    left: 25%;
     transform: none;
     padding: 10px;
     border-radius: 8px;
@@ -348,8 +365,61 @@ footer #add-book {
 
   #favorites {  
     position: center;
-    top: 205vh;
-    right: 185px;
+    top: 200%;
+    right: 25%;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    height: 60%;
+  }
+}
+
+#completed-list-ul{
+  left:-4%;
+}
+
+@media (max-width: 292px) {
+
+  #new-parent-to-read {
+    display: block;
+    flex-direction: column;
+    align-items: top;
+  }
+  #to-read, #completed, #favorites {
+    margin-bottom: 100px; /* Add spacing between the lists */
+  }
+
+  #to-read {
+    position: center;
+    top: 4vh;
+    right: 5%;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 200px;
+    height: 60%;
+  
+  
+  }
+  #completed {
+    position: center;
+    top: 100vh;
+    left: 15%;
+    transform: none;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    width: 300px;
+    height: 60%;
+  }
+
+  #favorites {  
+    position: center;
+    top: 200%;
+    right: 15%;
     transform: none;
     padding: 10px;
     border-radius: 8px;
