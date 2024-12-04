@@ -8,170 +8,176 @@
     <link rel="stylesheet" type="text/css" href="./reset.css"/>
     <link rel="stylesheet" type="text/css" href="./style.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-   
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
     <!--OVERPASS MONO FONT-->
-     <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Overpass+Mono:wght@300..700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Overpass+Mono:wght@300..700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
   </head>
-  <body>
   
-    <h1 class="text-center banner bg-primary py-3" id="sitelogo" style="font-family: Syncopate;">Better Reads</h1> <!-- Title of the page -->
-   
+  <body>
+    <header>
+      <h1 class="text-center banner bg-primary py-3" id="sitelogo" style="font-family: Syncopate;">Better Reads</h1> <!-- Title of the page -->
+    </header>
+    
     <main id="new parent">
-
       <div class="container text-center">
         <div class="row">
-        <!-- "To Read" Column -->
-        <div id="original-parent-to-read">
-          <div id="to-read" class="col-12 col-md-4 col-lg-4 mb-3">
-            <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
-            <!-- Button to trigger the "Add Book" modal -->
-          <ul id="book-list-ul"></ul><!-- Container for the "To Read" list -->
+
+          <!-- Lists -->
+          <!-- "To Read" column -->
+          <div id="original-parent-to-read">
+            <div id="to-read" class="col-12 col-md-4 col-lg-4 mb-3">
+              <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
+              <ul id="book-list-ul"></ul> <!-- Container for the "To Read" list -->
+            </div>
           </div>
 
-            <!-- "Add Book" Modal Structure -->
-            <div class="modal" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-        
-                  <!-- Modal Header -->
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="addBookModalLabel">Add a New Book</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-        
-                  <!-- Modal Body -->
-                  <div class="modal-body">
-                    <!-- Book Title Input -->
-                    <div class="mb-3">
-                      <label for="book-title" class="form-label">Book Title:</label>
-                      <input type="text" class="form-control" id="book-title" placeholder="Enter the book title">
-                    </div>
-          
-                  <!-- Book Summary Input -->
-                    <div class="mb-3">
-                      <label for="book-summary" class="form-label">Book Summary:</label>
-                      <textarea class="form-control" id="book-summary" rows="3" placeholder="Write a brief summary..."></textarea>
-                    </div>
-                  </div>
-        
-                  <!-- Modal Footer -->
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="save-book">Save Book</button>
-                  </div>
-                </div>
-              </div> 
+          <!-- "Completed" column -->
+          <div id="original-parent-completed">
+            <div id="completed" class="col-12 col-md-5 col-lg-5 mb-3">
+              <h2>Completed:</h2> <!-- Heading for the "Completed" section -->
+              <ul id="completed-list-ul"></ul> <!-- Container for the "Completed" list -->
             </div>
           </div>
         </div>
 
+        <!-- "Favorites" column -->
+        <div id="original-parent-favorites">  
+          <aside id="favorites" class="col-12 col-md-3 col-lg-3 position-absolute">
+            <h2>Favorites' List</h2> <!-- Heading for the "Favorites" section -->
+            <ul id="favorites-list-ul"></ul>
+          </aside>
+        </div>
+      </div>
 
-        <!-- "Completed" Column -->
-         <div id="original-parent-completed">
-          <div id="completed" class="col-12 col-md-5 col-lg-5 mb-3">
-            <h2>Completed:</h2> <!-- Heading for the "Completed" section -->
-            <ul id="completed-list-ul"></ul> <!-- Container for the "Completed" list -->
+      <!-- These are the new parent elements for screen size changes --> 
+      <div id="new-parent-to-read">
+        <div id="new-parent-completed">
+          <div id="new-parent-favorites">
           </div>
         </div>
       </div>
-    </div>
-
-
-      <!-- "Favorites" Column -->
-     <div id="original-parent-favorites">  
-      <aside id="favorites" class="col-12 col-md-3 col-lg-3 position-absolute">
-        <h2>Favorites' List</h2> <!-- Heading for the "Favorites" section -->
-        <ul id="favorites-list-ul"></ul>
-      </aside>
-    </div>
-   <!-- These are the new parent elements for screen size changes --> 
-<div id="new-parent-to-read">
-<div id="new-parent-completed">
-<div id="new-parent-favorites">
-</div>
-</div>
-</div>
     </main>
 
-
     <footer class="text-end">
-        <nav>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//ashb88.github.io/Better-Reads/" class="fa fa-facebook"></a>
-          <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
-          <a href="https://pinterest.com/pin/create/button/?url=https://ashb88.github.io/Better-Reads/&media=&description=" class="fa fa-pinterest"></a>
-          <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fashb88.github.io%2FBetter-Reads%2F&title=Better%20Reads%0A" class="fa fa-reddit"></a>
-          <a href="https://twitter.com/intent/tweet?url=https://ashb88.github.io/Better-Reads/&text=" class="fa fa-x-twitter">𝕏</a>
-        </nav>
 
-        <button id="add-book" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
-          Add Book
-          </button>
-      <!--Create a modal that appears when a book is completed. The modal will contain a star system, comment section, and an option to add to favorites if 5 stars-->
+      <!-- Social media links and icons -->
+      <nav>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//ashb88.github.io/Better-Reads/" class="fa fa-facebook"></a>
+        <a href="https://www.instagram.com/" class="fa fa-instagram"></a>
+        <a href="https://pinterest.com/pin/create/button/?url=https://ashb88.github.io/Better-Reads/&media=&description=" class="fa fa-pinterest"></a>
+        <a href="https://www.reddit.com/submit?url=https%3A%2F%2Fashb88.github.io%2FBetter-Reads%2F&title=Better%20Reads%0A" class="fa fa-reddit"></a>
+        <a href="https://twitter.com/intent/tweet?url=https://ashb88.github.io/Better-Reads/&text=" class="fa fa-x-twitter">𝕏</a>
+      </nav>
 
+      <!-- Buttons -->
+      <!-- "Add Book" button -->
+      <button id="add-book" type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#addBookModal">
+        Add Book
+      </button>
 
+      <!-- "Mark Book as Completed" button -->
       <button id="completed-button" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookCompletionModal">
         Mark Book as Completed
-        </button>
-       
-        <!-- Modal Structure -->
-        <div class="modal" id="bookCompletionModal" tabindex="-1" aria-labelledby="bookCompletionModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-       
-        <!-- Modal Header -->
-        <div class="modal-header">
-        <h5 class="modal-title" id="bookCompletionModalLabel">Book Completion Review</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-       
-        <!-- Modal Body -->
-        <div class="modal-body">
-        <!-- Star Rating System -->
-        <div class="mb-3">
-          <label for="star-rating" class="form-label">Rate the Book:</label>
-          <div class="star-rating">
-            <span class="star" data-value="1">&#9733;</span>  <!-- 1 star -->
-            <span class="star" data-value="2">&#9733;</span>  <!-- 2 stars -->
-            <span class="star" data-value="3">&#9733;</span>  <!-- 3 stars -->
-            <span class="star" data-value="4">&#9733;</span>  <!-- 4 stars -->
-            <span class="star" data-value="5">&#9733;</span>  <!-- 5 stars -->
-        </div>
-        </div>
-       
-        <!-- Comment Section -->
-        <div class="mb-3">
-          <label for="comment-text" class="form-label">Your Comments:</label>
-          <textarea class="form-control" id="comment-text" rows="3" placeholder="Leave your thoughts on the book..."></textarea>
-        </div>
-       
-        <!-- Add to Favorites Button (Hidden by default) -->
-        <div class="mb-3" id="favorites-section" style="display: none;">
-          <p>If you gave the book 5 stars, would you like to add it to your favorites?</p>
-          <button type="button" id="add-to-favorites" class="btn btn-success">Add to Favorites</button>
-          </div>
-        </div>
-       
-        <!-- Modal Footer -->
-        <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="submit-review">Submit Review</button>
-        </div>
-        </div>
-        </div>
-        </div>
+      </button>
 
-
-      <!-- "Remove Book" Button -->
+      <!-- "Remove Book" button -->
       <div class="mt-3">
-       <button type="button" class="btn btn-danger" id="remove-book">Remove Book</button>
+        <button type="button" class="btn btn-danger" id="remove-book">Remove Book</button>
       </div>
 
 
+      <!-- Modals -->
+      <!-- "Add Book" modal. This allows the user to add book titles to the "To Read" list -->
+      <!-- Modal structure -->
+      <div class="modal" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+        
+            <!-- Modal header -->
+            <div class="modal-header">
+              <h5 class="modal-title" id="addBookModalLabel">Add a New Book</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+        
+            <!-- Modal body -->
+            <div class="modal-body">
+              <!-- Book title input -->
+              <div class="mb-3">
+                <label for="book-title" class="form-label">Book Title:</label>
+                <input type="text" class="form-control" id="book-title" placeholder="Enter the book title">
+              </div>
+          
+            <!-- Book summary input -->
+            <div class="mb-3">
+              <label for="book-summary" class="form-label">Book Summary:</label>
+              <textarea class="form-control" id="book-summary" rows="3" placeholder="Write a brief summary..."></textarea>
+            </div>
+          </div>
+        
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="save-book">Save Book</button>
+            </div>
+          </div>
+        </div> 
+      </div>
+
+
+      <!-- "Mark as Completed" modal. The modal will contain a star system, comment section, and an option to add to favorites if 5 stars -->
+      <!-- Modal structure -->
+      <div class="modal" id="bookCompletionModal" tabindex="-1" aria-labelledby="bookCompletionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+       
+            <!-- Modal header -->
+            <div class="modal-header">
+              <h5 class="modal-title" id="bookCompletionModalLabel">Book Completion Review</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+       
+            <!-- Modal body -->
+            <div class="modal-body">
+              <!-- Star rating system -->
+              <div class="mb-3">
+                <label for="star-rating" class="form-label">Rate the Book:</label>
+                <div class="star-rating">
+                  <span class="star" data-value="1">&#9733;</span>  <!-- 1 star -->
+                  <span class="star" data-value="2">&#9733;</span>  <!-- 2 stars -->
+                  <span class="star" data-value="3">&#9733;</span>  <!-- 3 stars -->
+                  <span class="star" data-value="4">&#9733;</span>  <!-- 4 stars -->
+                  <span class="star" data-value="5">&#9733;</span>  <!-- 5 stars -->
+                </div>
+              </div>
+       
+              <!-- Comment section -->
+              <div class="mb-3">
+                <label for="comment-text" class="form-label">Your Comments:</label>
+                <textarea class="form-control" id="comment-text" rows="3" placeholder="Leave your thoughts on the book..."></textarea>
+              </div>
+       
+              <!-- "Add to Favorites" button (hidden when rating is less than 5 stars) -->
+              <div class="mb-3" id="favorites-section" style="display: none;">
+                <p>If you gave the book 5 stars, would you like to add it to your favorites?</p>
+                <button type="button" id="add-to-favorites" class="btn btn-success">Add to Favorites</button>
+              </div>
+            </div>
+       
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" id="submit-review">Submit Review</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </footer>
-    <script src="./BetterReads.js" type="text/javascript"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    </body>
+
+      <!-- JavaScript -->
+      <script src="./BetterReads.js" type="text/javascript"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  
+  </body>
 </html>
  
