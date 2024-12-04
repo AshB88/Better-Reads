@@ -13,25 +13,22 @@
     <!--OVERPASS MONO FONT-->
      <link href="https://fonts.googleapis.com/css2?family=Mynerve&family=Overpass+Mono:wght@300..700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
 
-
- 
-
   </head>
   <body>
-
+  
     <h1 class="text-center banner bg-primary py-3" id="sitelogo" style="font-family: Syncopate;">Better Reads</h1> <!-- Title of the page -->
    
-    <main>
-
+    <main id="new parent">
 
       <div class="container text-center">
         <div class="row">
         <!-- "To Read" Column -->
+        <div id="original-parent-to-read">
           <div id="to-read" class="col-12 col-md-4 col-lg-4 mb-3">
             <h2>To Read:</h2> <!-- Heading for the "To Read" section -->
             <!-- Button to trigger the "Add Book" modal -->
           <ul id="book-list-ul"></ul><!-- Container for the "To Read" list -->
- 
+          </div>
 
             <!-- "Add Book" Modal Structure -->
             <div class="modal" id="addBookModal" tabindex="-1" aria-labelledby="addBookModalLabel" aria-hidden="true">
@@ -72,21 +69,31 @@
 
 
         <!-- "Completed" Column -->
+         <div id="original-parent-completed">
           <div id="completed" class="col-12 col-md-5 col-lg-5 mb-3">
             <h2>Completed:</h2> <!-- Heading for the "Completed" section -->
             <ul id="completed-list-ul"></ul> <!-- Container for the "Completed" list -->
           </div>
         </div>
       </div>
-   
+    </div>
 
 
       <!-- "Favorites" Column -->
+     <div id="original-parent-favorites">  
       <aside id="favorites" class="col-12 col-md-3 col-lg-3 position-absolute">
         <h2>Favorites' List</h2> <!-- Heading for the "Favorites" section -->
         <ul id="favorites-list-ul"></ul>
       </aside>
-    </main> <!--11/26/24-->
+    </div>
+   <!-- These are the new parent elements for screen size changes --> 
+<div id="new-parent-to-read">
+<div id="new-parent-completed">
+<div id="new-parent-favorites">
+</div>
+</div>
+</div>
+    </main>
 
 
     <footer class="text-end">
